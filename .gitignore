@@ -1,0 +1,16 @@
+node_modules/
+www/
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/capacitor-cordova-android-plugins/build/
+*.keystore
+*.jks
+keystore.properties
+# iOS
+ios/App/build/
+ios/DerivedData/
+xcuserdata/
+*.xcuserstate

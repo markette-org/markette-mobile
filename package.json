@@ -1,0 +1,29 @@
+{
+  "name": "markette-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Markette for Android and iOS: the Markette web app in Capacitor, with \u201cShare with Markette\u201d.",
+  "license": "AGPL-3.0-only",
+  "scripts": {
+    "build:web": "node scripts/build-web.mjs",
+    "sync": "npm run build:web && cap sync",
+    "assets": "capacitor-assets generate --android --ios --iconBackgroundColor '#5b4bf5' --splashBackgroundColor '#5b4bf5' --splashBackgroundColorDark '#161429'",
+    "android:debug": "npm run sync && cd android && ./gradlew assembleDebug",
+    "android:release": "npm run sync && cd android && ./gradlew bundleRelease assembleRelease"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.5.2",
+    "@capacitor/app": "8.1.1",
+    "@capacitor/browser": "8.0.4",
+    "@capacitor/core": "8.5.2",
+    "@capacitor/ios": "8.5.2",
+    "@capacitor/splash-screen": "8.0.2",
+    "@capacitor/status-bar": "8.0.3",
+    "@capgo/capacitor-share-target": "8.0.54"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "3.0.5",
+    "@capacitor/cli": "8.5.2",
+    "typescript": "5.9.3"
+  }
+}

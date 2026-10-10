@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Markette</string>
+    <string name="title_activity_main">Markette</string>
+    <string name="package_name">app.markette.mobile</string>
+    <string name="custom_url_scheme">app.markette.mobile</string>
+    <string name="share_label">Markette</string>
+</resources>

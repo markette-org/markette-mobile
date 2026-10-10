@@ -1,0 +1,18 @@
+# Reproducible Android build environment for the Markette app (Capacitor 8: JDK 21, SDK 36).
+FROM eclipse-temurin:21-jdk
+
+ENV ANDROID_HOME=/opt/android-sdk ANDROID_SDK_ROOT=/opt/android-sdk
+ENV PATH=$PATH:/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/platform-tools
+
+RUN apt-get update && apt-get install -y --no-install-recommends unzip curl ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+RUN mkdir -p /opt/android-sdk/cmdline-tools \
+    && curl -fsSL -o /tmp/tools.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip \
+    && unzip -q /tmp/tools.zip -d /opt/android-sdk/cmdline-tools \
+    && mv /opt/android-sdk/cmdline-tools/cmdline-tools /opt/android-sdk/cmdline-tools/latest \
+    && rm /tmp/tools.zip
+RUN yes | sdkmanager --licenses >/dev/null \
+    && sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0" >/dev/null
+
+WORKDIR /app/android
+CMD ["./gradlew", "assembleDebug"]
