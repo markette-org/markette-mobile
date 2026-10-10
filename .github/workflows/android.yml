@@ -28,7 +28,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-      - uses: android-actions/setup-android@v3
+      # GitHub's Ubuntu runners ship the Android SDK (ANDROID_HOME); Gradle fetches missing platforms.
       - name: Build web app and sync
         working-directory: markette-mobile
         run: npm ci && npm run sync
